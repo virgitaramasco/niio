@@ -1,0 +1,658 @@
+/* ==========================================================================
+   NIIO — Official Responsive Website Stylesheet
+   Palette: Strict Black (#000000) & Paper White (#f8f8f8) only.
+   Typography: Helvetica Neue (Medium 65) with tight leading & tracking.
+   Slide Mode: Exactly 100svh full-screen sections on all devices.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Local Helvetica Neue Typography
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('assets/fonts/Helvetica-Neue-65-Medium.ttf') format('truetype'),
+       url('Helvetica-Neue-65-Medium.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #000000;
+  --paper: #f8f8f8;
+  --pad: clamp(16px, 2.1vw, 32px);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--ink);
+  color: var(--paper);
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--paper);
+  background: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Links & Keyboard Focus Accessibility */
+a, button {
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Slide Structure (Exact 100svh: Top Nav, Content, Bottom Bar)
+   Every slide occupies the entire height of the screen on all devices.
+   -------------------------------------------------------------------------- */
+.slide {
+  height: 100svh;
+  height: 100vh;
+  min-height: 100svh;
+  max-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.light {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Top Navigation
+   Centered SoundCloud, Instagram, Beatport.
+   On black background: plain white text.
+   On white background: black rectangular labels with white text.
+   -------------------------------------------------------------------------- */
+.nav-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8px, 1.4vh, 16px) var(--pad) 0;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 1.8vw, 24px);
+  font-size: clamp(14px, 1.35vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 8px 10px 9px;
+  white-space: nowrap;
+}
+
+.dark .nav a {
+  color: var(--paper);
+}
+
+.dark .nav a:hover {
+  opacity: 0.7;
+}
+
+/* On light background: crisp black badges with white text */
+.light .nav a {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 6px 12px 7px;
+}
+
+.light .nav a:hover {
+  background: #2b2b2b;
+}
+
+/* MILAN badge top right of Section 2 */
+.city {
+  position: absolute;
+  right: var(--pad);
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  font-size: clamp(13px, 1.2vw, 16px);
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Bar
+   Left: NIIO logo | Center: Section Title | Right: 2026
+   -------------------------------------------------------------------------- */
+.bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  padding: clamp(10px, 1.8vh, 22px) var(--pad) calc(clamp(10px, 1.8vh, 22px) + env(safe-area-inset-bottom));
+  font-weight: 600;
+  font-size: clamp(13px, 1.25vw, 16px);
+  letter-spacing: -0.02em;
+  z-index: 5;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bar .bar-logo {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar svg.logo-h {
+  height: clamp(18px, 1.8vh, 22px);
+  width: auto;
+  display: block;
+  fill: currentColor;
+}
+
+.bar b {
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  white-space: nowrap;
+}
+
+.bar .bar-year {
+  text-align: right;
+  display: block;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Section 1: Hero (Black, Vertical Logo centered)
+   No "Press Kit" subtitle.
+   -------------------------------------------------------------------------- */
+.hero {
+  display: grid;
+  place-items: center;
+  padding: 2vh var(--pad);
+  min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.hero svg.logo-v {
+  height: min(48svh, 54vw, 420px);
+  width: auto;
+  fill: var(--paper);
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Press Pictures
+   Three photos filling height, center photo has "Press pics & video" label
+   -------------------------------------------------------------------------- */
+.press {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  padding: clamp(8px, 1.5vh, 20px) 0 0;
+  min-height: 0;
+  height: 100%;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.press figure {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  height: 100%;
+  margin: 0;
+}
+
+.press picture,
+.press img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tag {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 8px clamp(14px, 2.5vw, 32px) 9px;
+  font-size: clamp(14px, 1.5vw, 20px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  box-shadow: none;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.tag:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Biography
+   White background, justified text, three black labels at bottom
+   -------------------------------------------------------------------------- */
+.bio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(12px, 3vh, 50px) var(--pad) 0;
+  max-width: 1380px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.bio::-webkit-scrollbar {
+  display: none;
+}
+
+.bio h1 {
+  font-weight: 600;
+  font-size: clamp(20px, 3.1vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: clamp(12px, 2.2vw, 32px);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.bio p {
+  font-size: clamp(13px, 1.45vw, 20px);
+  line-height: 1.13;
+  letter-spacing: -0.025em;
+  margin-bottom: clamp(8px, 1.4vh, 18px);
+  text-align: justify;
+  hyphens: auto;
+  max-width: 1330px;
+}
+
+.bio .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.8vw, 32px);
+  margin-top: clamp(12px, 2.8vh, 36px);
+}
+
+.bio .links a {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 7px 12px 8px;
+  font-size: clamp(13px, 1.35vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.bio .links a:hover {
+  background: #2b2b2b;
+}
+
+/* --------------------------------------------------------------------------
+   Section 4: Last Out / Releases
+   4 square covers flush without gap, title, metadata, black "Listen here" button
+   -------------------------------------------------------------------------- */
+.rel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: center;
+  align-items: start;
+  gap: 0;
+  padding: clamp(8px, 1.5vh, 20px) var(--pad) 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.rel article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.rel picture,
+.rel img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.rel h2 {
+  font-weight: 500;
+  font-size: clamp(15px, 1.6vw, 23px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: clamp(8px, 1.2vh, 14px) 0 4px;
+  padding-right: 14px;
+}
+
+.rel p {
+  font-size: clamp(12px, 1.15vw, 15px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(8px, 1.4vh, 14px);
+  padding-right: 14px;
+}
+
+.btn {
+  align-self: flex-start;
+  margin-top: auto;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  padding: 6px 12px 7px;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: #2b2b2b;
+}
+
+/* --------------------------------------------------------------------------
+   Tech & Hospitality Rider Lightbox Modal
+   -------------------------------------------------------------------------- */
+.rider-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3vh, 32px) var(--pad);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-sizing: border-box;
+}
+
+.rider-modal:not([hidden]) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rider-modal-header {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.rider-modal-close,
+.rider-modal-download {
+  background: var(--paper);
+  color: var(--ink);
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  cursor: pointer;
+  letter-spacing: -0.02em;
+}
+
+.rider-modal-close:hover,
+.rider-modal-download:hover {
+  background: #e0e0e0;
+}
+
+.rider-modal-content {
+  max-width: min(680px, 94vw);
+  max-height: calc(100svh - 110px);
+  overflow-y: auto;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  background: #ffffff;
+}
+
+.rider-modal-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   Crucial: every section remains exact 100svh on mobile and tablet.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  /* Releases in 100svh: Horizontal swipe row with snap */
+  .rel {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 16px;
+    padding: 0 var(--pad);
+    align-items: center;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .rel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rel article {
+    flex: 0 0 clamp(200px, 60vw, 260px);
+    width: clamp(200px, 60vw, 260px);
+    max-width: 260px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-self: center;
+  }
+
+  .rel article picture {
+    display: block;
+    width: 100%;
+    height: clamp(200px, 60vw, 260px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .rel article img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .rel h2 {
+    font-size: clamp(13px, 3.4vw, 16px);
+    line-height: 1.1;
+    margin: 8px 0 3px;
+    padding-right: 0;
+  }
+
+  .rel p {
+    font-size: clamp(11px, 2.6vw, 13px);
+    line-height: 1.15;
+    margin-bottom: 8px;
+    padding-right: 0;
+  }
+
+  .btn {
+    align-self: flex-start;
+    font-size: 12px;
+    padding: 5px 9px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-wrap {
+    padding: 6px 8px 0;
+    justify-content: center;
+  }
+
+  .nav {
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .nav a {
+    padding: 7px 6px 8px;
+    font-size: 13.5px;
+  }
+
+  .light .nav a {
+    padding: 5px 8px 6px;
+    font-size: 13px;
+  }
+
+  .city {
+    top: auto;
+    bottom: calc(clamp(8px, 1.5vh, 18px) + 26px);
+    right: var(--pad);
+    font-size: 12px;
+  }
+
+  .bar {
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom));
+    font-size: 12.5px;
+  }
+
+  .bar svg.logo-h {
+    height: 16px;
+  }
+
+  .bio {
+    padding: 8px var(--pad) 0;
+  }
+
+  .bio h1 {
+    font-size: clamp(18px, 4.8vw, 24px);
+    line-height: 1.06;
+    margin-bottom: 8px;
+  }
+
+  .bio p {
+    text-align: left;
+    hyphens: none;
+    font-size: clamp(12.5px, 3.2vw, 14.5px);
+    line-height: 1.16;
+    margin-bottom: 6px;
+  }
+
+  .bio .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .bio .links a {
+    font-size: 12px;
+    padding: 6px 9px 7px;
+  }
+
+  .press {
+    padding-top: 6px;
+  }
+
+  .tag {
+    font-size: 13px;
+    padding: 6px 14px 7px;
+    bottom: 4%;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

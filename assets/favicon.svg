@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#000000"/>
+  <g transform="translate(76, 185.25) scale(0.8955)">
+    <use href="#h" fill="#f8f8f8"/>
+  </g>
+  <defs>
+    <symbol id="o" viewBox="0 0 158 402">
+      <path fill-rule="evenodd" d="M79 0a79 79 0 1 0 .01 0zM79 36a43 43 0 1 1-.01 0z"/>
+      <rect y="172" width="158" height="35"/>
+      <rect y="222" width="158" height="35"/>
+      <rect y="271" width="158" height="35"/>
+      <path d="M57 306h41L60 366H19z"/>
+      <rect y="367" width="158" height="35"/>
+    </symbol>
+    <symbol id="h" viewBox="0 0 402 158">
+      <use href="#o" width="158" height="402" transform="translate(402 0) rotate(90)"/>
+    </symbol>
+  </defs>
+</svg>
