@@ -35,7 +35,7 @@ html {
   background: var(--ink);
   color: var(--paper);
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   height: 100%;
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
@@ -497,40 +497,39 @@ a:focus-visible, button:focus-visible {
    Crucial: every section remains exact 100svh on mobile and tablet.
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  /* Releases in 100svh: Horizontal swipe row with snap */
+  /* Releases section: natural vertical flow for the release list */
+  .slide#music {
+    height: auto;
+    min-height: 100svh;
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* Releases listed vertically one above the other */
   .rel {
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 16px;
-    padding: 0 var(--pad);
-    align-items: center;
-    height: 100%;
+    flex-direction: column;
+    gap: clamp(28px, 4vh, 44px);
+    padding: clamp(16px, 2.5vh, 28px) var(--pad) clamp(24px, 3.5vh, 40px);
+    max-width: 460px;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
     min-height: 0;
   }
 
-  .rel::-webkit-scrollbar {
-    display: none;
-  }
-
   .rel article {
-    flex: 0 0 clamp(200px, 60vw, 260px);
-    width: clamp(200px, 60vw, 260px);
-    max-width: 260px;
-    scroll-snap-align: center;
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     height: auto;
-    align-self: center;
   }
 
   .rel article picture {
     display: block;
     width: 100%;
-    height: clamp(200px, 60vw, 260px);
+    height: auto;
     aspect-ratio: 1 / 1;
     overflow: hidden;
   }
@@ -544,23 +543,23 @@ a:focus-visible, button:focus-visible {
   }
 
   .rel h2 {
-    font-size: clamp(13px, 3.4vw, 16px);
-    line-height: 1.1;
-    margin: 8px 0 3px;
+    font-size: clamp(16px, 4.2vw, 21px);
+    line-height: 1.08;
+    margin: 12px 0 4px;
     padding-right: 0;
   }
 
   .rel p {
-    font-size: clamp(11px, 2.6vw, 13px);
+    font-size: clamp(12.5px, 3vw, 14.5px);
     line-height: 1.15;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     padding-right: 0;
   }
 
   .btn {
     align-self: flex-start;
-    font-size: 12px;
-    padding: 5px 9px;
+    font-size: 13px;
+    padding: 7px 14px;
   }
 }
 
