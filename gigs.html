@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>GIGS — NIIO</title>
+  <meta name="description" content="NIIO upcoming tour dates, gigs, and club appearances across Milan, Europe and international dancefloors.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 226.1 574.14'%3E%3Cpath fill='%23000' d='M0 0h226.1v574.14H0z'/%3E%3Cpath fill='%23fff' d='M39.69 494.39V79.75h146.72v414.64H39.69zm37.38-37.38h71.96V117.13H77.07v339.88z'/%3E%3C/svg%3E">
+  <style>
+    @font-face {
+      font-family: 'Helvetica Neue Custom';
+      src: url('./Helvetica-Neue-65-Medium.ttf') format('truetype');
+      font-weight: 500 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #000000;
+      --text: #f8f8f8;
+      --muted: rgba(248, 248, 248, 0.55);
+      --border: rgba(255, 255, 255, 0.12);
+      --hover-bg: rgba(255, 255, 255, 0.06);
+      --pill-bg: rgba(68, 68, 68, 0.5);
+      --pad: clamp(18px, 4vw, 48px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Helvetica Neue Custom', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      min-height: 100svh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(20px, 3vh, 36px) var(--pad) clamp(20px, 3vh, 32px);
+    }
+
+    /* Top Bar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto 36px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: opacity 0.2s;
+    }
+
+    .brand-link:hover {
+      opacity: 0.7;
+    }
+
+    .logo-h {
+      height: 24px;
+      width: auto;
+      fill: currentColor;
+      display: block;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 7px 16px;
+      border-radius: 20px;
+      background: var(--pill-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Main Container */
+    main {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .gig-count {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+    }
+
+    /* Table Styles */
+    .gigs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    .gigs-table thead th {
+      text-align: left;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 14px 16px 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gigs-table thead th.th-tickets {
+      text-align: right;
+      padding-right: 0;
+    }
+
+    .gig-row {
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.15s ease;
+    }
+
+    .gig-row:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .gig-cell {
+      padding: 18px 16px 18px 0;
+      font-size: clamp(14px, 1.35vw, 17px);
+      letter-spacing: -0.02em;
+      vertical-align: middle;
+    }
+
+    .gig-date {
+      font-weight: 600;
+      white-space: nowrap;
+      width: 160px;
+    }
+
+    .gig-venue {
+      font-weight: 500;
+    }
+
+    .gig-city {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .gig-actions {
+      text-align: right;
+      padding-right: 0;
+      white-space: nowrap;
+      width: 140px;
+    }
+
+    .ticket-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--text);
+      color: #000;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 7px 16px;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .ticket-btn:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .ticket-btn.disabled {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      pointer-events: none;
+      border: 1px solid var(--border);
+    }
+
+    .ticket-btn.sold-out {
+      background: transparent;
+      color: #ff5555;
+      border: 1px solid rgba(255, 85, 85, 0.4);
+      pointer-events: none;
+    }
+
+    /* Empty state */
+    .empty-state {
+      padding: 64px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 48px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 680px) {
+      .gigs-table thead {
+        display: none;
+      }
+
+      .gigs-table, .gigs-table tbody, .gig-row {
+        display: block;
+        width: 100%;
+      }
+
+      .gig-row {
+        padding: 16px 0;
+      }
+
+      .gig-cell {
+        display: block;
+        padding: 4px 0;
+        width: 100%;
+      }
+
+      .gig-date {
+        font-size: 13px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 2px;
+      }
+
+      .gig-venue {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .gig-city {
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+
+      .gig-actions {
+        text-align: left;
+        padding-top: 4px;
+        width: 100%;
+      }
+
+      .ticket-btn {
+        width: 100%;
+        padding: 9px 0;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG Symbols Definition -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="h" viewBox="0 0 574.14 226.1">
+      <path fill-rule="evenodd" d="M198.81 226.1V0H0v226.1h198.81zM37.38 37.38h124.05v151.34H37.38V37.38zM249.25 0h37.38v226.1h-37.38V0zm87.49 0h37.39v226.1h-37.39V0zm87.4 226.1V0h150v226.1H424.14zM461.52 37.38h75.24v151.34h-75.24V37.38z"/>
+    </symbol>
+  </svg>
+
+  <header>
+    <a href="index.html" class="brand-link" title="NIIO — Home">
+      <svg class="logo-h" viewBox="0 0 574.14 226.1" role="img" aria-label="NIIO Logo">
+        <use href="#h"/>
+      </svg>
+    </a>
+    <a href="index.html" class="back-btn" title="Return to Home">
+      <span>←</span>
+      <span>Home</span>
+    </a>
+  </header>
+
+  <main>
+    <div class="title-row">
+      <h1>Gigs</h1>
+      <span class="gig-count" id="gig-count">Upcoming Dates</span>
+    </div>
+
+    <table class="gigs-table" id="gigs-table" aria-label="NIIO Upcoming Gigs">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Venue</th>
+          <th>City</th>
+          <th class="th-tickets">Tickets</th>
+        </tr>
+      </thead>
+      <tbody id="gigs-body">
+        <!-- Rendered dynamically from gigs-data.js -->
+      </tbody>
+    </table>
+
+    <div class="empty-state" id="empty-state" style="display: none;">
+      No upcoming tour dates announced yet.<br>Check back soon or follow on <a href="https://www.instagram.com/niio_ofc/" target="_blank" rel="noopener noreferrer" style="color: var(--text); text-decoration: underline;">Instagram</a> for announcements.
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; <span id="year">2026</span> NIIO. ALL RIGHTS RESERVED</span>
+    <a href="press-kit.html">Press Kit &rarr;</a>
+  </footer>
+
+  <!-- Load editable dates list -->
+  <script src="gigs-data.js"></script>
+  <script>
+    (function() {
+      // Dynamic year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const gigs = window.NIIO_GIGS || [];
+      const tbody = document.getElementById('gigs-body');
+      const emptyState = document.getElementById('empty-state');
+      const table = document.getElementById('gigs-table');
+      const countEl = document.getElementById('gig-count');
+
+      if (!gigs || gigs.length === 0) {
+        table.style.display = 'none';
+        emptyState.style.display = 'block';
+        countEl.textContent = '0 dates';
+        return;
+      }
+
+      countEl.textContent = gigs.length === 1 ? '1 date' : gigs.length + ' dates';
+
+      gigs.forEach(function(gig) {
+        var tr = document.createElement('tr');
+        tr.className = 'gig-row';
+
+        var status = (gig.status || 'Tickets').trim();
+        var hasValidUrl = gig.ticketUrl && gig.ticketUrl !== '#' && gig.ticketUrl.trim() !== '';
+
+        var btnClass = 'ticket-btn';
+        var btnHref = hasValidUrl ? gig.ticketUrl : '#';
+        var btnAttr = hasValidUrl ? 'target="_blank" rel="noopener noreferrer"' : '';
+
+        if (status.toLowerCase() === 'sold out' || status.toLowerCase() === 'sold-out') {
+          btnClass += ' sold-out';
+        } else if (!hasValidUrl && status.toLowerCase() === 'tickets') {
+          btnClass += ' disabled';
+          status = 'Info soon';
+        }
+
+        tr.innerHTML = 
+          '<td class="gig-cell gig-date">' + (gig.date || '') + '</td>' +
+          '<td class="gig-cell gig-venue">' + (gig.venue || '') + '</td>' +
+          '<td class="gig-cell gig-city">' + (gig.city || '') + '</td>' +
+          '<td class="gig-cell gig-actions">' +
+            '<a class="' + btnClass + '" href="' + btnHref + '" ' + btnAttr + '>' +
+              '<span>' + status + '</span>' +
+              (hasValidUrl ? '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '') +
+            '</a>' +
+          '</td>';
+
+        tbody.appendChild(tr);
+      });
+    })();
+  </script>
+</body>
+</html>
