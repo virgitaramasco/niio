@@ -497,6 +497,56 @@ a:focus-visible, button:focus-visible {
    Crucial: every section remains exact 100svh on mobile and tablet.
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
+  /* Press section: natural vertical flow for the 3 photos */
+  .slide#press {
+    height: auto;
+    min-height: 100svh;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .press {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: clamp(12px, 2vh, 24px) 0 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .press figure {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .press picture,
+  .press img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .tag {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 8px 22px 9px;
+    font-size: clamp(13px, 3.6vw, 16px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
   /* Releases section: natural vertical flow for the release list */
   .slide#music {
     height: auto;
@@ -586,10 +636,10 @@ a:focus-visible, button:focus-visible {
   }
 
   .city {
-    top: auto;
-    bottom: calc(clamp(8px, 1.5vh, 18px) + 26px);
+    top: 50%;
+    transform: translateY(-50%);
     right: var(--pad);
-    font-size: 12px;
+    font-size: 11.5px;
   }
 
   .bar {
