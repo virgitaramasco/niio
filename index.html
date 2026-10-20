@@ -58,9 +58,9 @@
       height: 100svh;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-      padding: calc(clamp(20px, 4vh, 48px) + env(safe-area-inset-top)) var(--pad) calc(clamp(16px, 2.5vh, 28px) + env(safe-area-inset-bottom));
+      padding: env(safe-area-inset-top) var(--pad) calc(clamp(16px, 2.5vh, 28px) + env(safe-area-inset-bottom));
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -87,8 +87,7 @@
       pointer-events: none;
     }
 
-    /* Foreground content layers above background */
-    .landing-header,
+    /* Foreground content layers in bottom area */
     .landing-bottom {
       position: relative;
       z-index: 10;
@@ -96,24 +95,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: clamp(12px, 1.8vh, 18px);
+      margin-top: auto;
     }
 
-    /* Top Logo */
-    .landing-header {
-      padding-top: clamp(10px, 2.2vh, 26px);
-    }
-
-    .logo-v {
-      height: clamp(65px, 11vh, 105px);
-      width: auto;
-      fill: var(--text);
-      display: block;
-      filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.95));
-      transition: transform 0.2s ease;
-    }
-
-    .logo-v:hover {
-      transform: scale(1.03);
+    /* Logo positioned in bottom area */
+    .landing-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 2px;
     }
 
     .logo-h {
@@ -123,6 +115,11 @@
       fill: var(--text);
       display: block;
       filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.95));
+      transition: transform 0.2s ease;
+    }
+
+    .logo-h:hover {
+      transform: scale(1.02);
     }
 
     /* Bottom Interactive Area */
@@ -408,15 +405,15 @@
     <!-- Atmospheric Background Image -->
     <div class="landing-bg" aria-hidden="true"></div>
 
-    <!-- Top Logo (Vertical Brand Symbol - Caterina suggestion) -->
-    <header class="landing-header">
-      <svg class="logo-v" viewBox="0 0 226.1 574.14" role="img" aria-label="NIIO Logo">
-        <use href="#o"/>
-      </svg>
-    </header>
-
-    <!-- Bottom Interactive Controls -->
+    <!-- Bottom Interactive Controls & Brand -->
     <section class="landing-bottom">
+      <!-- NIIO Brand Logo (in basso) -->
+      <div class="landing-logo-wrap">
+        <svg class="logo-h" viewBox="0 0 574.14 226.1" role="img" aria-label="NIIO Logo">
+          <use href="#h"/>
+        </svg>
+      </div>
+
       <!-- Social Media Links -->
       <nav class="socials" aria-label="Social media">
         <!-- Instagram -->
