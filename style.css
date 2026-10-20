@@ -364,17 +364,22 @@ a:focus-visible, button:focus-visible {
    Section 4: Last Out / Releases
    4 square covers flush without gap, title, metadata, black "Listen here" button
    -------------------------------------------------------------------------- */
+.slide#music {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .rel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-content: center;
-  align-items: start;
+  align-items: stretch;
   gap: 0;
-  padding: clamp(8px, 1.5vh, 20px) var(--pad) 0;
+  padding: 0 var(--pad);
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 0;
   box-sizing: border-box;
 }
@@ -382,32 +387,39 @@ a:focus-visible, button:focus-visible {
 .rel article {
   display: flex;
   flex-direction: column;
-  height: 100%;
   box-sizing: border-box;
+  min-width: 0;
 }
 
-.rel picture,
-.rel img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+.rel article picture {
   display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.rel article img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .rel h2 {
   font-weight: 500;
-  font-size: clamp(15px, 1.6vw, 23px);
-  line-height: 1.05;
+  font-size: clamp(14px, 1.4vw, 21px);
+  line-height: 1.08;
   letter-spacing: -0.03em;
-  margin: clamp(8px, 1.2vh, 14px) 0 4px;
+  margin: clamp(8px, 1.3vh, 16px) 0 4px;
   padding-right: 14px;
 }
 
 .rel p {
-  font-size: clamp(12px, 1.15vw, 15px);
+  font-size: clamp(11.5px, 1vw, 14px);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-bottom: clamp(8px, 1.4vh, 14px);
+  margin-bottom: clamp(8px, 1.3vh, 14px);
   padding-right: 14px;
 }
 
@@ -416,7 +428,7 @@ a:focus-visible, button:focus-visible {
   margin-top: auto;
   background: var(--ink);
   color: var(--paper);
-  font-size: clamp(12px, 1.1vw, 14px);
+  font-size: clamp(11.5px, 0.95vw, 13.5px);
   font-weight: 500;
   letter-spacing: -0.02em;
   padding: 6px 12px 7px;
