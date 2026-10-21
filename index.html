@@ -58,22 +58,22 @@
       height: 100svh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
-      padding: env(safe-area-inset-top) var(--pad) calc(clamp(16px, 2.5vh, 28px) + env(safe-area-inset-bottom));
+      padding: max(env(safe-area-inset-top), 12px) var(--pad) calc(clamp(14px, 2.2vh, 24px) + env(safe-area-inset-bottom));
       box-sizing: border-box;
       overflow: hidden;
     }
 
-    /* Cinematic background photo with dark vignette */
+    /* Cinematic background photo occupying 100% vertical screen height without filling horizontally */
     .landing-bg {
       position: absolute;
       inset: 0;
       background-color: #000000;
       background-image: url('./assets/hero-bg.webp');
-      background-position: center 28%;
+      background-position: center bottom;
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: auto 100%;
       z-index: 1;
     }
 
@@ -82,9 +82,35 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at center 35%, rgba(0, 0, 0, 0.05) 15%, rgba(0, 0, 0, 0.5) 60%, #000000 100%),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0.85) 90%, #000000 100%);
+        radial-gradient(circle at center 35%, rgba(0, 0, 0, 0.03) 15%, rgba(0, 0, 0, 0.45) 60%, #000000 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.02) 20%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0.85) 90%, #000000 100%);
       pointer-events: none;
+    }
+
+    /* Top Brand Header (posizionato nello spazio nero in alto, piccolo e non invasivo) */
+    .landing-header {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: clamp(6px, 1.2vh, 16px);
+    }
+
+    .logo-h {
+      width: clamp(95px, 20vw, 130px);
+      height: auto;
+      max-height: clamp(32px, 4.8vh, 46px);
+      fill: var(--text);
+      display: block;
+      filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.95));
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .logo-h:hover {
+      transform: scale(1.03);
+      opacity: 0.95;
     }
 
     /* Foreground content layers in bottom area */
@@ -95,36 +121,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(12px, 1.8vh, 18px);
-      margin-top: auto;
-    }
-
-    /* Logo positioned in bottom area */
-    .landing-logo-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 2px;
-    }
-
-    .logo-h {
-      width: clamp(130px, 14vw, 190px);
-      height: auto;
-      max-height: clamp(38px, 5.5vh, 60px);
-      fill: var(--text);
-      display: block;
-      filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.95));
-      transition: transform 0.2s ease;
-    }
-
-    .logo-h:hover {
-      transform: scale(1.02);
-    }
-
-    /* Bottom Interactive Area */
-    .landing-bottom {
       gap: clamp(14px, 2.2vh, 22px);
+      margin-top: auto;
     }
 
     /* Social Links Grid */
@@ -350,12 +348,13 @@
     @media (max-width: 600px) {
       .landing-bg {
         background-image: url('./assets/hero-bg-mobile.webp');
-        background-size: cover;
-        background-position: center 22%;
+        background-size: auto 100%;
+        background-position: center bottom;
       }
 
       .logo-h {
-        width: clamp(125px, 32vw, 155px);
+        width: clamp(90px, 22vw, 120px);
+        max-height: clamp(30px, 4.5vh, 40px);
       }
 
       .actions {
@@ -402,18 +401,18 @@
   </svg>
 
   <main class="landing">
-    <!-- Atmospheric Background Image -->
+    <!-- Atmospheric Background Image (occupies vertical height, does not fill horizontally) -->
     <div class="landing-bg" aria-hidden="true"></div>
 
-    <!-- Bottom Interactive Controls & Brand -->
-    <section class="landing-bottom">
-      <!-- NIIO Brand Logo (in basso) -->
-      <div class="landing-logo-wrap">
-        <svg class="logo-h" viewBox="0 0 574.14 226.1" role="img" aria-label="NIIO Logo">
-          <use href="#h"/>
-        </svg>
-      </div>
+    <!-- Header with NIIO Brand Logo (posizionato in alto nello spazio nero, compatto e non sopra l'immagine) -->
+    <header class="landing-header">
+      <svg class="logo-h" viewBox="0 0 574.14 226.1" role="img" aria-label="NIIO Logo">
+        <use href="#h"/>
+      </svg>
+    </header>
 
+    <!-- Bottom Interactive Controls -->
+    <section class="landing-bottom">
       <!-- Social Media Links -->
       <nav class="socials" aria-label="Social media">
         <!-- Instagram -->
