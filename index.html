@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>NIIO — Official Website</title>
-  <meta name="description" content="NIIO — Italian DJ & music producer based in Milan. Official website, tour dates, gigs, music, and booking contacts.">
+  <meta name="description" content="NIIO — DJ &amp; Music Producer based in Milan. Official gigs, releases, and bookings.">
   <meta property="og:title" content="NIIO — Official Website">
-  <meta property="og:description" content="NIIO — Italian DJ & music producer based in Milan. Official tour dates, gigs, releases, and bookings.">
+  <meta property="og:description" content="NIIO — DJ &amp; Music Producer based in Milan. Official gigs, releases, and bookings.">
   <meta property="og:image" content="https://virgitaramasco.github.io/niio/assets/preview.jpg">
   <meta property="og:image:secure_url" content="https://virgitaramasco.github.io/niio/assets/preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="NIIO — Official Website">
-  <meta name="twitter:description" content="NIIO — Italian DJ & music producer based in Milan. Official tour dates, gigs, releases, and bookings.">
+  <meta name="twitter:description" content="NIIO — DJ &amp; Music Producer based in Milan. Official gigs, releases, and bookings.">
   <meta name="twitter:image" content="https://virgitaramasco.github.io/niio/assets/preview.jpg">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
@@ -148,6 +148,33 @@
       padding-right: var(--pad);
       margin-top: auto;
       box-sizing: border-box;
+    }
+
+    /* Presentation Tagline */
+    .landing-presentation {
+      text-align: center;
+      max-width: 520px;
+      margin-bottom: 2px;
+      user-select: none;
+    }
+
+    .presentation-title {
+      font-size: clamp(12px, 1.2vw, 14.5px);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #f8f8f8;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+      line-height: 1.4;
+    }
+
+    .presentation-sub {
+      font-size: clamp(10.5px, 0.95vw, 12.5px);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      margin-top: 3px;
+      line-height: 1.4;
     }
 
     /* Social Links Grid */
@@ -438,6 +465,12 @@
 
     <!-- Bottom Interactive Controls -->
     <section class="landing-bottom">
+      <!-- Presentation Tagline -->
+      <div class="landing-presentation">
+        <h1 class="presentation-title">NIIO — DJ &amp; Music Producer based in Milan.</h1>
+        <p class="presentation-sub">Official gigs, releases, and bookings.</p>
+      </div>
+
       <!-- Social Media Links -->
       <nav class="socials" aria-label="Social media">
         <!-- Instagram -->
