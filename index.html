@@ -87,6 +87,10 @@
       padding-bottom: 12px;
       padding-left: var(--pad);
       padding-right: var(--pad);
+      border: none !important;
+      border-bottom: none !important;
+      outline: none !important;
+      box-shadow: none !important;
       box-sizing: border-box;
       flex-shrink: 0;
     }
@@ -109,7 +113,7 @@
     /* Cinematic background photo occupying 100% vertical height below the header without horizontal stretch */
     .landing-bg {
       position: absolute;
-      top: var(--header-h, 60px);
+      top: calc(var(--header-h, 57px) - 2px);
       left: 0;
       right: 0;
       bottom: 0;
