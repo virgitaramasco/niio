@@ -28,14 +28,14 @@ window.NIIO_GIGS = [
     date: "13/11/2026",
     venue: "Officina",
     city: "Milan, IT",
-    ticketUrl: "#",
+    ticketUrl: "https://xceed.me/en/milano/event/soulstice-at-officina-milano-1/250657/channel/soulstice-1",
     status: "Tickets"
   },
   {
     date: "14/11/2026",
     venue: "The Sanctuary",
     city: "Milan, IT",
-    ticketUrl: "#",
+    ticketUrl: "https://xceed.me/it/milano/event/super-flu-at-the-sanctuary-milan/251375/channel/2a-srl",
     status: "Tickets"
   },
   {
