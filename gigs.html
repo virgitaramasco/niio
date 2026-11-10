@@ -390,7 +390,23 @@
       // Dynamic year
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      const gigs = window.NIIO_GIGS || [];
+      function isPastDate(dateStr) {
+        if (!dateStr) return false;
+        var parts = dateStr.split('/');
+        if (parts.length === 3) {
+          var day = parseInt(parts[0], 10);
+          var month = parseInt(parts[1], 10) - 1;
+          var year = parseInt(parts[2], 10);
+          var eventEnd = new Date(year, month, day, 23, 59, 59);
+          return eventEnd < new Date();
+        }
+        return false;
+      }
+
+      const rawGigs = window.NIIO_GIGS || [];
+      const gigs = rawGigs.filter(function(g) {
+        return !isPastDate(g.date);
+      });
       const tbody = document.getElementById('gigs-body');
       const emptyState = document.getElementById('empty-state');
       const table = document.getElementById('gigs-table');

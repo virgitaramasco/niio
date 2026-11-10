@@ -18,13 +18,6 @@
 
 window.NIIO_GIGS = [
   {
-    date: "07/11/2026",
-    venue: "Ronin",
-    city: "Milan, IT",
-    ticketUrl: "#",
-    status: "Tickets"
-  },
-  {
     date: "13/11/2026",
     venue: "Officina",
     city: "Milan, IT",
