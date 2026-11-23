@@ -18,17 +18,10 @@
 
 window.NIIO_GIGS = [
   {
-    date: "13/11/2026",
-    venue: "Officina",
+    date: "28/11/2026",
+    venue: "Ronin",
     city: "Milan, IT",
-    ticketUrl: "https://xceed.me/en/milano/event/soulstice-at-officina-milano-1/250657/channel/soulstice-1",
-    status: "Tickets"
-  },
-  {
-    date: "14/11/2026",
-    venue: "The Sanctuary",
-    city: "Milan, IT",
-    ticketUrl: "https://xceed.me/it/milano/event/super-flu-at-the-sanctuary-milan/251375/channel/2a-srl",
+    ticketUrl: "https://partiful.com/e/6wZDiggFxt5ML2rzsPeN?c=P1gQ1mJu",
     status: "Tickets"
   },
   {
@@ -42,13 +35,6 @@ window.NIIO_GIGS = [
     date: "12/12/2026",
     venue: "The Sanctuary",
     city: "Milan, IT",
-    ticketUrl: "#",
-    status: "Tickets"
-  },
-  {
-    date: "26/12/2026",
-    venue: "Halo",
-    city: "Verona, IT",
     ticketUrl: "#",
     status: "Tickets"
   }
